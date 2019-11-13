@@ -100,7 +100,7 @@ Replace the first test (which adds no value) with the following:
 it('creates a new bank with no accounts', function () {
     const Bank = require('./bank.js');
     const bank = new Bank();
-    expect(bank.accounts.length).toBe(0)
+    expect(bank.accounts().length).toBe(0)
 });
 ```
 
@@ -154,7 +154,7 @@ it('adds a new account', function () {
     const accountName = faker.finance.accountName();
     bank.addAccount(accountName);
     
-    const accounts = bank.accounts;
+    const accounts = bank.accounts();
     expect(accounts.length).toBe(1);
     expect(accounts[0].accountName).toBe(accountName);
 });
@@ -294,6 +294,34 @@ this.withdraw = function (accountName, amount) {
 }
 ```
 
+#### Refactoring
+
+Both methods `deposit` and `withdraw` have to find the desired account. Let's refactor that duplication:
+
+Step 1: create a `findAccount` method inside Bank: 
+
+```js
+function findAccount(accountName) {
+    return accounts.find(function (account) {
+        return account.accountName === accountName;
+    });
+}
+```
+
+Step 2: use the newly created method in `deposit` and `withdraw`:
+
+```js
+this.deposit = function (accountName, amount) {
+    const account = findAccount(accountName);
+    account.amount = account.amount + Number(amount);
+};
+
+this.withdraw = function (accountName, amount) {
+    const account = findAccount(accountName);
+    account.amount = account.amount - Number(amount);
+};
+```
+
 #### Exercise
 
 Using TDD, create a calculator with the following methods:
@@ -302,10 +330,6 @@ Using TDD, create a calculator with the following methods:
 - subtract
 - multiply
 - divide
-
-#### Refactoring
-
-Both methods `deposit` and `withdraw` have to find the desired account. Let's refactor that duplication:
 
 ### Part I: TDDing the UI
 
