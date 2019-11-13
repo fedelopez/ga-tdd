@@ -6,10 +6,17 @@
   "author": "fedelopez",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "e2e": "cypress run",
+    "start": "parcel index.html"
   },
   "devDependencies": {
+    "cypress": "^3.6.1",
     "faker": "^4.1.0",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "parcel": "^1.12.4"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }
