@@ -347,13 +347,14 @@ This will initialise all the necessary files so that Cypress can run the end to 
 
 Remove all the files located in `cypress/integration`.
 
-Add a task to run the end to end tests:
+Add the following tasks to run and debug the end to end tests:
 
 ```text
 ...
   "scripts": {
     ...
     "e2e": "cypress run",
+    "e2e-debug": "cypress open",
     ...
   },
 ...
