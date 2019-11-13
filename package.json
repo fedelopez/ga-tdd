@@ -8,6 +8,7 @@
   "scripts": {
     "test": "jest",
     "e2e": "cypress run",
+    "e2e-debug": "cypress open",
     "start": "parcel index.html"
   },
   "devDependencies": {
