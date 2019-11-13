@@ -1,0 +1,15 @@
+{
+  "name": "ga-tdd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:fedelopez/ga-tdd.git",
+  "author": "fedelopez <fede.lopez@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^24.9.0"
+  }
+}
